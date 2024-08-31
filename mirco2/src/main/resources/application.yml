@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: mirco2
+server:
+  port: 9092
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      readMessageCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
